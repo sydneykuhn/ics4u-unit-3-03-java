@@ -80,7 +80,6 @@ final class BinarySearch {
     * @param args No args will be used
     */
     public static void main(final String[] args) {
-        System.out.println("Binary Search Program");
         try {
             // Initializing the random class
             final Random randNumber = new Random();
@@ -98,7 +97,7 @@ final class BinarySearch {
             final int[] numberArray = randomNumberArray;
             Arrays.sort(numberArray);
 
-            System.out.print("\nSorted list of numbers:\n");
+            System.out.print("Sorted Array:\n");
             for (int element: numberArray) {
                 final String padded = String.format("%03d", element);
                 System.out.print(padded + ", ");
@@ -107,29 +106,27 @@ final class BinarySearch {
 
             // Getting user input as to what number they wish to search for
             final Scanner userInput = new Scanner(System.in);
-            System.out.print("What number are you searching for in the array");
-            System.out.print(" (integer between 0 and 999): ");
+            System.out.print("What number are you searching for? (0 - 999): ");
             final int searchNumber = userInput.nextInt();
             userInput.close();
             System.out.println();
 
             // Ensuring the user inputs an appropriate integer
             if (searchNumber > MAX || searchNumber < MIN) {
-                throw new Exception();
+                System.out.print("Your number is in index -1.");
             } else {
                 // Using binary search to find the user's
                 // chosen number in the array
                 final int searchResult = binarySearch(numberArray,
                                 searchNumber, 0, numberArray.length - 1);
                 // Outputing the results of the search
-                System.out.println();
-                System.out.println("Your number is in index: " + searchResult);
+                System.out.println("Your number is in index " + searchResult + ".");
             }
 
         // Catches and tells the user that an error occured
         } catch (java.util.InputMismatchException error) {
-            System.out.println();
-            System.out.println("ERROR: Invalid Input");
+            System.out.println("Your number is in index -1.");
         }
+        System.out.println("\nDone.");
     }
 }
